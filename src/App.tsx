@@ -28,6 +28,8 @@ import { CategoryList, CategoryCreate, CategoryEdit } from "pages/categories";
 
 import { TOKEN_KEY, API_URL } from "./constants";
 import { ConfigProvider } from "antd";
+import { LeadList } from "pages/leads/list";
+import { LeadCreate } from "pages/leads/create";
 
 const App: React.FC = () => {
     const axiosInstance = axios.create();
@@ -135,6 +137,12 @@ const App: React.FC = () => {
                             edit: "/categories/edit/:id",
                         },
                         {
+                            name: "leads",
+                            list: "/leads",
+                            create: "/leads/create",
+                            //edit: "/categories/edit/:id",
+                        },
+                        {
                             name: "users",
                             list: "/users",
                         },
@@ -179,6 +187,14 @@ const App: React.FC = () => {
                                 <Route
                                     path="edit/:id"
                                     element={<CategoryEdit />}
+                                />
+                            </Route>
+
+                            <Route path="/leads">
+                                <Route index element={<LeadList />} />
+                                <Route
+                                    path="create"
+                                    element={<LeadCreate />}
                                 />
                             </Route>
 
